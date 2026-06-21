@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Bento Grid Theme Variables */
+:root {
+  --accent: #6366F1;
+}
+
+@utility glass-card-dark {
+  background: rgba(30, 41, 59, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+@utility glass-card-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.03);
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-slate-800 bg-slate-50 transition-colors duration-200 dark:text-slate-100 dark:bg-[#0F172A];
+  }
+  
+  h1, h2, h3, h4, .display-font {
+    @apply font-display tracking-tight font-semibold;
+  }
+}
+
+/* --- Bento Grid Global Theme Overrides --- */
+
+/* Fixed ambient dark-mode glow at the top right of the viewport */
+.dark body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), rgba(30, 41, 59, 0.05) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Beautiful custom glassy card styling applying to all 2xl rounded panel containers */
+.rounded-2xl {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* Dark mode overrides */
+.dark .rounded-2xl {
+  background-color: rgba(30, 41, 59, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .border-slate-800,
+.dark .dark\:border-slate-800,
+.dark .dark\:border-slate-800\/80,
+.dark .border-slate-200, /* fallback */
+.dark .dark\:border-slate-850\/80 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Light mode overrides */
+.rounded-2xl {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Responsive sidebar glass overrides */
+.dark aside {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  border-right-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+aside {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+  border-right-color: rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Side navigation item active highlights matching Bento styling */
+.dark button.bg-indigo-600\/10 {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #F8FAFC !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+button.bg-indigo-600\/10 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.09) !important;
+  color: #6366F1 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Custom gorgeous neon/indigo scrollbars for scrollable cards */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* Inner elements and list rows styling */
+.rounded-xl {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.dark .rounded-xl {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .rounded-xl:hover {
+  background-color: rgba(99, 102, 241, 0.06) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.rounded-xl {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+.rounded-xl:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  border-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+
